@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace TimerCalculatorUtility
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace TimerCalculatorUtility.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class DetailPage : ContentPage
     {
-        public MainPage()
+        public DetailPage()
         {
             InitializeComponent();
         }

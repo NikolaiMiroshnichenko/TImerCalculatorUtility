@@ -8,8 +8,31 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Time, StringFormat='{0:HH:mm}'}"/>
-            <Button Command="{Binding StartCommand}"/>
+            <!--<Label Text="{Binding Time, StringFormat='{0:HH:mm}'}"/>-->
+            <ListView ItemsSource="{Binding Times}">
+                <ListView.Header>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Lap" HorizontalOptions="Start"/>
+                        <Label Text="Lap times" HorizontalOptions="Center"/>
+                        <Label Text="Overall time" HorizontalOptions="End"/>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="100">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding LapNumber}" HorizontalOptions="Start"/>
+                                <Label Text="{Binding LapTime, StringFormat='{}{0:mm\\:ss\\:ms}'}" HorizontalOptions="Center"/>
+                                <Label Text="{Binding OverallTime, StringFormat='{}{0:mm\\:ss\\:ms}'}" HorizontalOptions="End"/>   
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Stop" Command="{Binding StopCommand}"/>
+                <Button Text="Lap" Command="{Binding LapCommand}"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

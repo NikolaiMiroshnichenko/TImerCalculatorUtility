@@ -35,11 +35,11 @@ namespace TimerCalculatorUtility.ViewModels
         public Command ToCalculatorCommand { get; set; }
         private void NavigateToTimer()
         {
-            App.Navigation.PushAsync(new TimerView());
+            App.Navigation.PushAsync(new NavigationPage(new TimerView()));
         }
         private void NavigateToCalculator()
         {
-            App.Navigation.PushAsync(new CalculatorView());
+            App.Navigation.PushAsync(new NavigationPage(new CalculatorView()));
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Net.Http.Headers;
+using System.Linq;
 using TimerCalculatorUtility.Models;
 using Xamarin.Forms;
 
@@ -17,7 +17,8 @@ namespace TimerCalculatorUtility.ViewModels
     public class TimerViewModel : INotifyPropertyChanged
     {
         private int _lapCount;
-        private Stopwatch _stopwatch = new Stopwatch();
+        private Stopwatch _stopwatchLap = new Stopwatch();
+        private Stopwatch _stopwatchOverall = new Stopwatch();
         private TimeSpan _overallTime = new TimeSpan(0, 00, 00);
 
         public TimerViewModel()
@@ -29,9 +30,8 @@ namespace TimerCalculatorUtility.ViewModels
             ResumeCommand = new Command(ResumeLap);
             StartCommand = new Command(StartMain);
         }
-
-        public TimeSpan Time { get; set; } = new TimeSpan(0, 00, 00);
-        public string TimeString { get; set; }
+        public string TimeString { get; set; } = "00:00.00";
+        public string LapTimeString { get; set; } = "00:00.00";
         public string Text { get; set; }
         public ObservableCollection<TimerItem> Times { get; set; } = new ObservableCollection<TimerItem>();
         public Command StopCommand { get; set; }
@@ -51,15 +51,16 @@ namespace TimerCalculatorUtility.ViewModels
         private void StartMain()
         {
             Status = StopwatchStatus.Processing;
-            _stopwatch.Start();
-            
-            Device.StartTimer(TimeSpan.FromMilliseconds(1000), () =>
+            _stopwatchLap.Start();
+            _stopwatchOverall.Start();
+            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
             {
-                
-                TimeString = string.Format("{0:00}:{0:00}:{0:00}", _stopwatch.Elapsed.Minutes, _stopwatch.Elapsed.Seconds,
-                   _stopwatch.Elapsed.Milliseconds);
 
-                if (!_stopwatch.IsRunning)
+                LapTimeString = string.Format("{0:00}:{1:00}.{2:00}", _stopwatchLap.Elapsed.Minutes, _stopwatchLap.Elapsed.Seconds,
+                   _stopwatchLap.Elapsed.Milliseconds);
+                TimeString = string.Format("{0:00}:{1:00}.{2:00}", _stopwatchOverall.Elapsed.Minutes, _stopwatchOverall.Elapsed.Seconds,
+                   _stopwatchOverall.Elapsed.Milliseconds);
+                if (!_stopwatchOverall.IsRunning)
                 {
                     return false;
                 }
@@ -74,37 +75,58 @@ namespace TimerCalculatorUtility.ViewModels
         private void ResumeLap()
         {
             Status = StopwatchStatus.Processing;
+            _stopwatchOverall.Start();
+            _stopwatchLap.Start();
+            Device.StartTimer(TimeSpan.FromMilliseconds(1), () =>
+            {
+                LapTimeString = string.Format("{0:00}:{1:00}.{2:00}", _stopwatchLap.Elapsed.Minutes, _stopwatchLap.Elapsed.Seconds,
+                   _stopwatchLap.Elapsed.Milliseconds);
+                TimeString = string.Format("{0:00}:{1:00}.{2:00}", _stopwatchOverall.Elapsed.Minutes, _stopwatchOverall.Elapsed.Seconds,
+                   _stopwatchOverall.Elapsed.Milliseconds);
+
+                if (!_stopwatchOverall.IsRunning)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            });
         }
 
         private void Reset()
         {
             Status = StopwatchStatus.Onstart;
-            _stopwatch.Reset();
             Times.Clear();
+            _stopwatchLap.Reset();
+            _stopwatchLap.Start();
+            _stopwatchOverall.Reset();
+            _stopwatchOverall.Start();
+            TimeString = "00:00.00";
+            LapTimeString = "00:00.00";
         }
 
         private void Stop()
         {
             Status = StopwatchStatus.Stopped;
-            _stopwatch.Stop();
-            _lapCount++;
-            Time = _stopwatch.Elapsed;
-            _overallTime = _overallTime.Add(_stopwatch.Elapsed);            
+            _stopwatchOverall.Stop();
+            _stopwatchLap.Stop();
         }
 
         private void StartLap()
         {
             _lapCount++;
-            Time = _stopwatch.Elapsed;
-            _overallTime = _overallTime.Add(_stopwatch.Elapsed);
-            Times.Add(new TimerItem
+            Times.Insert (0,
+                new TimerItem
             {
                 LapNumber = _lapCount,
-                LapTime = _stopwatch.Elapsed,
-                OverallTime = _overallTime
+                LapTime = _stopwatchLap.Elapsed,
+                OverallTime = _stopwatchOverall.Elapsed
             });
-            _stopwatch.Reset();
-            _stopwatch.Start();
+            
+            _stopwatchLap.Reset();
+            _stopwatchLap.Start();
         }
     }
 }

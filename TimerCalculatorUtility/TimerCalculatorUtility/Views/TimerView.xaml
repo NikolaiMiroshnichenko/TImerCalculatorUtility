@@ -25,7 +25,7 @@
                    AbsoluteLayout.LayoutFlags="All"
                    AbsoluteLayout.LayoutBounds="0.53,0.17,0.7,0.13"
                    x:Name="CurrentTimeLabel"/>
-            <Label Text="{Binding Time, StringFormat='{}{0:mm\\:ss\\.ms}'}"
+            <Label Text="{Binding LapTimeString}"
                    FontSize="35"
                    AbsoluteLayout.LayoutFlags="All"
                    AbsoluteLayout.LayoutBounds="0.5, 0.3, 0.4, 0.08"/>
@@ -34,7 +34,8 @@
                       IsVisible="{Binding Path=Status, 
                                                  Converter={StaticResource ListViewVisibilityConverter}}"
                       AbsoluteLayout.LayoutFlags="All"
-                      AbsoluteLayout.LayoutBounds="0.5,0.7,0.8,0.5">
+                      AbsoluteLayout.LayoutBounds="0.5,0.7,0.8,0.5"                      
+                      >
                 <ListView.Header>
                     <StackLayout Margin="0,30,0,20">
                         <StackLayout Orientation="Horizontal" >
@@ -50,8 +51,8 @@
                         <ViewCell Height="100" >
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding LapNumber}" HorizontalOptions="StartAndExpand" />
-                                <Label Text="{Binding LapTime, StringFormat='{}{0:mm\\:ss\\.ms}'}" HorizontalOptions="CenterAndExpand" />
-                                <Label Text="{Binding OverallTime, StringFormat='{}{0:mm\\:ss\\.ms}'}" HorizontalOptions="EndAndExpand" Margin="0,0,10,0" />
+                                <Label Text="{Binding LapTime, StringFormat='{0:mm\\:ss\\.ff}'}" HorizontalOptions="CenterAndExpand" Margin="10,0,0,0"/>
+                                <Label Text="{Binding OverallTime, StringFormat='{0:mm\\:ss\\.ff}'}" HorizontalOptions="EndAndExpand" Margin="0,0,10,0" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

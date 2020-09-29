@@ -19,7 +19,6 @@ namespace TimerCalculatorUtility.ViewModels
         private int _lapCount;
         private Stopwatch _stopwatchLap = new Stopwatch();
         private Stopwatch _stopwatchOverall = new Stopwatch();
-        private TimeSpan _overallTime = new TimeSpan(0, 00, 00);
 
         public TimerViewModel()
         {

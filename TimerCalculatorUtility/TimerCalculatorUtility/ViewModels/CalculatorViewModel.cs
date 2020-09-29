@@ -1,22 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Text;
 using Xamarin.Forms;
 
 namespace TimerCalculatorUtility.ViewModels
 {
-    public class CalculatorViewModel
+    public class CalculatorViewModel : INotifyPropertyChanged
     {
-        private int _action;
-        public string InjectedString { get; set; }
-        public int Result { get; set; }
-        public Command DeleteLastSymbolCommandd { get; set; }
+        private StringBuilder _readedString = new StringBuilder();
+
+        public CalculatorViewModel()
+        {
+            InputSymbolCommand = new Command<string>(AddSymbolToString);
+            ResultCommand = new Command(Resulting);
+            ClearCommand = new Command(Clear);
+        }
+
+        public string InputString { get; set; }
+        public string ResultString { get; set; }
+        public Command<string> InputSymbolCommand { get; set; }
         public Command ClearCommand { get; set; }
-        public Command DivisionCommand { get; set; }
-        public Command MultiplicationCommand { get; set; }
-        public Command SumCommand { get; set; }
-        public Command SubstractCommand { get; set; }
         public Command ResultCommand { get; set; }
-        
+        public Command DleleteLastSymbolCommand { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string prop)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        private void AddSymbolToString(string symbol)
+        {
+            InputString = _readedString.Append(symbol).ToString();
+        }
+
+        private void Resulting()
+        {
+            ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
+        }
+
+        private void Clear()
+        {
+            InputString = string.Empty;
+            ResultString = string.Empty;
+            _readedString.Clear();
+        }
     }
 }

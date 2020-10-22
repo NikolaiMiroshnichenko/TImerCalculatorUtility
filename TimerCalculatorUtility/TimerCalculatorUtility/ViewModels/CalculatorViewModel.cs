@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Text;
@@ -34,11 +33,21 @@ namespace TimerCalculatorUtility.ViewModels
         private void AddSymbolToString(string symbol)
         {
             InputString = _readedString.Append(symbol).ToString();
+            WriteInResultString(symbol);
+        }
+
+        private void WriteInResultString(string symbol)
+        {
+            if ((symbol == "-") || (symbol == "+") || (symbol == "*") || (symbol == "/"))
+                return;
+            ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
         }
 
         private void Resulting()
         {
-            ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
+            _readedString.Clear();
+            _readedString.Append(ResultString);
+            InputString = ResultString;
         }
 
         private void Clear()

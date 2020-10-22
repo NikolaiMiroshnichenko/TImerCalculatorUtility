@@ -8,11 +8,21 @@
             <Setter Property="CornerRadius" Value="25" />
         </Style>
         <Style x:Key="ActionButtonCalcStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#f2f2f2"/>
             <Setter Property="TextColor" Value="#68b31a" />
-            <!--<Setter Property="CornerRadius" Value=""-->
+            <Setter Property="CornerRadius" Value="40"    />
+            <Setter Property="MinimumWidthRequest" Value="70"    />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="WidthRequest" Value="CenterAndExpand"    />
+            <Setter Property="FontSize" Value="35" />
         </Style>
         <Style x:Key="SymbolButtonCalcStyle" TargetType="Button">
-            <Setter Property="TextColor" Value="#535353" />
+            <Setter Property="BackgroundColor" Value="#f2f2f2"/>
+            <Setter Property="CornerRadius" Value="40"    />
+            <Setter Property="MinimumWidthRequest" Value="70"    />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="WidthRequest" Value="CenterAndExpand"    />
+            <Setter Property="FontSize" Value="35" />
         </Style>
 
     </Application.Resources>

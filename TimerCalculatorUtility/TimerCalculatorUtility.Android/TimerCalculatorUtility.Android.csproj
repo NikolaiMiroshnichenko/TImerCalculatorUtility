@@ -94,13 +94,19 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\mipmap-hdpi\delete_512.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimerCalculatorUtility\TimerCalculatorUtility.csproj">
       <Project>{412DD2C8-611A-4D63-AFD3-65BB37AD32C0}</Project>
       <Name>TimerCalculatorUtility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\delete_512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\delete_512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

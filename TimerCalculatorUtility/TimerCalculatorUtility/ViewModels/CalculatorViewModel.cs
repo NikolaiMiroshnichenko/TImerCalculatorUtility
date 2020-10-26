@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using Xamarin.Forms;
 
@@ -16,6 +18,9 @@ namespace TimerCalculatorUtility.ViewModels
             InputSymbolCommand = new Command<string>(AddSymbolToString);
             ResultCommand = new Command(Resulting);
             ClearCommand = new Command(Clear);
+            DleleteLastSymbolCommand = new Command(DeletelastSymbol);
+            PrecentCommand = new Command(CalcPrcent);
+        //    CangePoliarityCommand = new Command(ChangePoliarity);
         }
 
         public string InputString { get; set; }
@@ -24,21 +29,54 @@ namespace TimerCalculatorUtility.ViewModels
         public Command ClearCommand { get; set; }
         public Command ResultCommand { get; set; }
         public Command DleleteLastSymbolCommand { get; set; }
+        public Command PrecentCommand { get; set; }
+        public Command CangePoliarityCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string prop)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
 
         private void AddSymbolToString(string symbol)
         {
             InputString = _readedString.Append(symbol).ToString();
+            WriteInResultString(symbol);
         }
+
+        private void WriteInResultString(string symbol)
+        {
+            if ((symbol == "-") || (symbol == "+") || (symbol == "*") || (symbol == "/"))
+                return;
+            ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
+        }
+
+        private void CalcPrcent()
+        {
+            InputString = _readedString.Append("/100").ToString();
+            ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
+        }
+
+      /*  private void ChangePoliarity()
+        {
+            int i = InputString.IndexOf('-');
+            InputString = InputString.Remove(i,'-');
+
+
+            string reversedString = (string)InputString.Reverse();
+            reversedString. reversedString.FirstOrDefault((x) => x == '-');
+        }*/
 
         private void Resulting()
         {
-            ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
+            _readedString.Clear();
+            _readedString.Append(ResultString);
+            InputString = ResultString;
+        }
+
+        private void DeletelastSymbol()
+        {
+            if (ResultString.Length == 1)
+                return;
+            InputString = InputString.Remove(InputString.Length-1);
+            ResultString = ResultString.Remove(ResultString.Length - 1);
+            _readedString =  _readedString.Remove(_readedString.Length-1,1);
         }
 
         private void Clear()

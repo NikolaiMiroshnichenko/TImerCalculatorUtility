@@ -1,4 +1,5 @@
 ﻿using System;
+using TimerCalculatorUtility.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace TimerCalculatorUtility
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage( new MainPage());
+            MainPage = new NavigationPage( new TimerView());
             Navigation = MainPage.Navigation;
         }
         public static INavigation Navigation { get; private set; }

@@ -10,9 +10,7 @@ namespace TimerCalculatorUtility
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage( new TimerView());
-            Navigation = MainPage.Navigation;
+            MainPage = new MainPage();
         }
         public static INavigation Navigation { get; private set; }
         protected override void OnStart()

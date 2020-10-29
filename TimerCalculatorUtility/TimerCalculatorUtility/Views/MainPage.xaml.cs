@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimerCalculatorUtility.Views;
 using Xamarin.Forms;
 
 namespace TimerCalculatorUtility
@@ -13,6 +14,9 @@ namespace TimerCalculatorUtility
         public MainPage()
         {
             InitializeComponent();
+           
         }
+
+   
     }
 }

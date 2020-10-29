@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:TimerCalculatorUtility.ViewModels"
-             x:Class="TimerCalculatorUtility.Views.CalculatorView">
+             x:Class="TimerCalculatorUtility.Views.CalculatorView"
+             IconImageSource="humburger.png"
+             Title="Calculator">
     <ContentPage.BindingContext>
         <viewmodels:CalculatorViewModel x:Name="ViewModel"/>
     </ContentPage.BindingContext>
@@ -31,7 +33,7 @@
 
 
             <Label Text="{Binding InputString}" HorizontalOptions="EndAndExpand" FontSize="40" TextColor="Black"
-                   Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,0,40,0" />
+                   Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,0,20,0" />
 
             <Label Text="{Binding ResultString}"  HorizontalOptions="EndAndExpand" FontSize="30"
                    Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Margin="0,0,25,0"/>

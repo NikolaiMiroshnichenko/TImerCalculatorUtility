@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Input;
-using TimerCalculatorUtility.Models;
 using TimerCalculatorUtility.Views;
 using Xamarin.Forms;
 using MenuItem = TimerCalculatorUtility.Models.MenuItem;
@@ -18,12 +14,12 @@ namespace TimerCalculatorUtility.ViewModels
             {
                 new MenuItem
                 {
-                    Text = "To Timer page",
+                    Text = "Timer",
                     Command  = new Command(NavigateToTimer)
                 },
                 new MenuItem
                 {
-                    Text = "To Calculator page",
+                    Text = "Calculator",
                     Command  = new Command(NavigateToCalculator)
                 },
             };
@@ -36,14 +32,14 @@ namespace TimerCalculatorUtility.ViewModels
         private void NavigateToTimer()
         {
             TimerView timerView = new TimerView();
-            NavigationPage.SetHasNavigationBar(timerView, false);
+         //   NavigationPage.SetHasNavigationBar(timerView, false);
             App.Navigation.PushAsync(timerView);
            
         }
         private void NavigateToCalculator()
         {
             CalculatorView calculatorView = new CalculatorView();
-            NavigationPage.SetHasNavigationBar(calculatorView, false);
+          //  NavigationPage.SetHasNavigationBar(calculatorView, false);
             App.Navigation.PushAsync(calculatorView);
         }
     }

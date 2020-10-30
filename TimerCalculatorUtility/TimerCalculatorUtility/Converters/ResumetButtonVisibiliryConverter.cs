@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using TimerCalculatorUtility.ViewModels;
+using TimerCalculatorUtility.Enums;
 
 namespace TimerCalculatorUtility.Converters
 {

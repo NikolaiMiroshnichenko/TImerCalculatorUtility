@@ -10,16 +10,17 @@
         <viewmodels:MenuPageViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding MenuItems}">
+        <ListView ItemsSource="{Binding MenuItems}"
+                  HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image HeightRequest="100" WidthRequest="100"
+                             Source="{Binding ImageSource}"/>
                             <Button Text="{Binding Text}" 
-                           
-                                    Clicked="Button_Clicked"/>
-                        <!--Command="{Binding Command}"-->
-                    </StackLayout>
+                             Command="{Binding Command}"/>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

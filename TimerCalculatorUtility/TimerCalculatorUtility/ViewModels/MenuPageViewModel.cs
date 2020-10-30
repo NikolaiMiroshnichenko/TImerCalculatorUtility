@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TimerCalculatorUtility.Views;
 using Xamarin.Forms;
 using MenuItem = TimerCalculatorUtility.Models.MenuItem;
@@ -15,32 +14,40 @@ namespace TimerCalculatorUtility.ViewModels
                 new MenuItem
                 {
                     Text = "Timer",
+                    ImageSource = "x_27_512.png",
                     Command  = new Command(NavigateToTimer)
                 },
                 new MenuItem
                 {
                     Text = "Calculator",
+                    ImageSource = "Stopwatch_512.png",
                     Command  = new Command(NavigateToCalculator)
                 },
             };
         }
 
         public List<MenuItem> MenuItems { get; set; }
-
         public Command ToTimerCommand { get; set; }
         public Command ToCalculatorCommand { get; set; }
+
         private void NavigateToTimer()
         {
-            TimerView timerView = new TimerView();
-         //   NavigationPage.SetHasNavigationBar(timerView, false);
-            App.Navigation.PushAsync(timerView);
-           
+            NavigateTo(new TimerView());
         }
+
         private void NavigateToCalculator()
         {
-            CalculatorView calculatorView = new CalculatorView();
-          //  NavigationPage.SetHasNavigationBar(calculatorView, false);
-            App.Navigation.PushAsync(calculatorView);
+            NavigateTo(new CalculatorView());
+        }
+
+        private void NavigateTo(Page page)
+        {
+            var detailPage = Application.Current.MainPage as MasterDetailPage;
+            if (detailPage != null)
+            {
+                detailPage.Detail = new NavigationPage(page);
+                detailPage.IsPresented = false;
+            }
         }
     }
 }

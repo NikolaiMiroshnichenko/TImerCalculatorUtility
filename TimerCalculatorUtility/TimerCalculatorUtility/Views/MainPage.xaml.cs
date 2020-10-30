@@ -14,7 +14,6 @@ namespace TimerCalculatorUtility
         public MainPage()
         {
             InitializeComponent();
-           
         }
 
    

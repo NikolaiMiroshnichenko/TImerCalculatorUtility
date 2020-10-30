@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
 using Xamarin.Forms;
 
@@ -20,7 +17,6 @@ namespace TimerCalculatorUtility.ViewModels
             ClearCommand = new Command(Clear);
             DleleteLastSymbolCommand = new Command(DeletelastSymbol);
             PrecentCommand = new Command(CalcPrcent);
-        //    CangePoliarityCommand = new Command(ChangePoliarity);
         }
 
         public string InputString { get; set; }
@@ -53,16 +49,6 @@ namespace TimerCalculatorUtility.ViewModels
             ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
         }
 
-      /*  private void ChangePoliarity()
-        {
-            int i = InputString.IndexOf('-');
-            InputString = InputString.Remove(i,'-');
-
-
-            string reversedString = (string)InputString.Reverse();
-            reversedString. reversedString.FirstOrDefault((x) => x == '-');
-        }*/
-
         private void Resulting()
         {
             _readedString.Clear();
@@ -74,9 +60,9 @@ namespace TimerCalculatorUtility.ViewModels
         {
             if (ResultString.Length == 1)
                 return;
-            InputString = InputString.Remove(InputString.Length-1);
+            InputString = InputString.Remove(InputString.Length - 1);
             ResultString = ResultString.Remove(ResultString.Length - 1);
-            _readedString =  _readedString.Remove(_readedString.Length-1,1);
+            _readedString = _readedString.Remove(_readedString.Length - 1, 1);
         }
 
         private void Clear()

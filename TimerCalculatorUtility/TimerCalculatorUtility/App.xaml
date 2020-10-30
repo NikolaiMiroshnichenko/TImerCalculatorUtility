@@ -3,13 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TimerCalculatorUtility.App">
     <Application.Resources>
+        <Color x:Key="StopwatchButtonGreen">#68b31a</Color>
+        <Color x:Key="Black">#0d0d0d</Color>
+        <Color x:Key="Transparent">#00000000</Color>
+        <Color x:Key="White">#f2f2f2</Color>
         <Style x:Key="timerButtonStyle" TargetType="Button">
-            <Setter Property="TextColor" Value="White" />
+            <Setter Property="TextColor" Value="{StaticResource Key=White}" />
             <Setter Property="CornerRadius" Value="25" />
         </Style>
         <Style x:Key="ActionButtonCalcStyle" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#f2f2f2"/>
-            <Setter Property="TextColor" Value="#68b31a" />
+            <Setter Property="BackgroundColor" Value="{StaticResource Key=White}"/>
+            <Setter Property="TextColor" Value="{StaticResource Key=StopwatchButtonGreen}" />
             <Setter Property="CornerRadius" Value="40"    />
             <Setter Property="WidthRequest" Value="75"    />
             <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
@@ -17,7 +21,7 @@
             <Setter Property="FontSize" Value="28" />
         </Style>
         <Style x:Key="SymbolButtonCalcStyle" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#f2f2f2"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource Key=White}"/>
             <Setter Property="TextColor" Value="#535353" />
             <Setter Property="CornerRadius" Value="40"    />
             <Setter Property="WidthRequest" Value="75"    />

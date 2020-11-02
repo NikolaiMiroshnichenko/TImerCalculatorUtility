@@ -32,7 +32,7 @@ namespace TimerCalculatorUtility.ViewModels
 
         private void NavigateToTimer()
         {
-            NavigateTo(new TimerView());
+            NavigateTo(new TimerView());    
         }
 
         private void NavigateToCalculator()

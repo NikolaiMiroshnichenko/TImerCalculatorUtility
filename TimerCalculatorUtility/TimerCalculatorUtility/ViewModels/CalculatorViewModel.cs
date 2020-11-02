@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.ComponentModel;
 using System.Data;
 using System.Text;
@@ -34,13 +35,6 @@ namespace TimerCalculatorUtility.ViewModels
         {
             InputString = _readedString.Append(symbol).ToString();
             WriteInResultString(symbol);
-        }
-
-        private void WriteInResultString(string symbol)
-        {
-            if ((symbol == "-") || (symbol == "+") || (symbol == "*") || (symbol == "/"))
-                return;
-            ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
         }
 
         private void CalcPrcent()

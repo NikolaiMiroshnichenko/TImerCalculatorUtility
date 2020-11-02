@@ -94,7 +94,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\mipmap-hdpi\delete_512.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimerCalculatorUtility\TimerCalculatorUtility.csproj">

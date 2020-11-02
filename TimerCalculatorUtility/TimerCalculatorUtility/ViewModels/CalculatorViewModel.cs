@@ -49,6 +49,13 @@ namespace TimerCalculatorUtility.ViewModels
             ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
         }
 
+        private void WriteInResultString(string symbol)
+        {
+            if ((symbol == "-") || (symbol == "+") || (symbol == "*") || (symbol == "/"))
+                return;
+            ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();
+        }
+
         private void Resulting()
         {
             _readedString.Clear();

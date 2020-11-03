@@ -16,7 +16,7 @@ namespace TimerCalculatorUtility.ViewModels
             InputSymbolCommand = new Command<string>(AddSymbolToString);
             ResultCommand = new Command(Resulting);
             ClearCommand = new Command(Clear);
-            DleleteLastSymbolCommand = new Command(DeletelastSymbol);
+            DleleteLastSymbolCommand = new Command(DeleteLastSymbol);
             PrecentCommand = new Command(CalcPrcent);
         }
 
@@ -58,7 +58,7 @@ namespace TimerCalculatorUtility.ViewModels
             InputString = ResultString;
         }
 
-        private void DeletelastSymbol()
+        private void DeleteLastSymbol()
         {
             if (ResultString.Length == 1)
                 return;

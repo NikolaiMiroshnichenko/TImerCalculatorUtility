@@ -39,9 +39,8 @@ namespace TimerCalculatorUtility.ViewModels
         }
 
         private void NavigateTo(Page page)
-        {
-            var detailPage = Application.Current.MainPage as MasterDetailPage;
-            if (detailPage != null)
+        {            
+            if (Application.Current.MainPage is MasterDetailPage detailPage)
             {
                 detailPage.Detail = new NavigationPage(page);
                 detailPage.IsPresented = false;

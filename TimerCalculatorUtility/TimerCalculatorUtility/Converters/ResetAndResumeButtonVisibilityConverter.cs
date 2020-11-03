@@ -1,14 +1,11 @@
-﻿using Xamarin.Forms;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
-using System.Text;
-using TimerCalculatorUtility.ViewModels;
 using TimerCalculatorUtility.Enums;
+using Xamarin.Forms;
 
 namespace TimerCalculatorUtility.Converters
 {
-    public class ResumetButtonVisibiliryConverter: IValueConverter
+    public class ResetAndResumeButtonVisibilityConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

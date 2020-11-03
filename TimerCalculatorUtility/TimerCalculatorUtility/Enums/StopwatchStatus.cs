@@ -3,7 +3,7 @@ namespace TimerCalculatorUtility.Enums
 {
     public enum StopwatchStatus
     {
-        Onstart,
+        OnStart,
         Processing,
         Stopped
     }

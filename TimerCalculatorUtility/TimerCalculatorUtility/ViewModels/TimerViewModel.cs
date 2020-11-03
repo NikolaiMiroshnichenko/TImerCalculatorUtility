@@ -4,19 +4,20 @@ using System.ComponentModel;
 using System.Diagnostics;
 using TimerCalculatorUtility.Enums;
 using TimerCalculatorUtility.Models;
+using TimerCalculatorUtility.ViewModels.Base;
 using Xamarin.Forms;
 
 namespace TimerCalculatorUtility.ViewModels
 {
-    public class TimerViewModel : INotifyPropertyChanged
+    public class TimerViewModel : BaseViewModel
     {
         private int _lapCount;
-        private Stopwatch _stopwatchLap = new Stopwatch();
-        private Stopwatch _stopwatchOverall = new Stopwatch();
+        private readonly Stopwatch _stopwatchLap = new Stopwatch();
+        private readonly Stopwatch _stopwatchOverall = new Stopwatch();
 
         public TimerViewModel()
         {
-            Status = StopwatchStatus.Onstart;
+            Status = StopwatchStatus.OnStart;
             StopCommand = new Command(Stop);
             LapCommand = new Command(StartLap);
             ResetCommand = new Command(Reset);
@@ -27,11 +28,11 @@ namespace TimerCalculatorUtility.ViewModels
         public string LapTimeString { get; set; } = "00:00.00";
         public string Text { get; set; }
         public ObservableCollection<TimerItem> Times { get; set; } = new ObservableCollection<TimerItem>();
-        public Command StopCommand { get; set; }
-        public Command LapCommand { get; set; }
-        public Command ResetCommand { get; set; }
-        public Command ResumeCommand { get; set; }
-        public Command StartCommand { get; set; }
+        public Command StopCommand { get; }
+        public Command LapCommand { get; }
+        public Command ResetCommand { get; }
+        public Command ResumeCommand { get; }
+        public Command StartCommand { get; }
         public StopwatchStatus Status { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -66,14 +67,9 @@ namespace TimerCalculatorUtility.ViewModels
             _stopwatchLap.Start();
         }
 
-        public void OnPropertyChanged(string prop)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-
         private void Reset()
         {
-            Status = StopwatchStatus.Onstart;
+            Status = StopwatchStatus.OnStart;
             Times.Clear();
             _stopwatchLap.Reset();
             _stopwatchLap.Start();

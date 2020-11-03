@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using System.Text;
 using TimerCalculatorUtility.Enums;
-using TimerCalculatorUtility.ViewModels;
 using Xamarin.Forms;
 
 namespace TimerCalculatorUtility.Converters

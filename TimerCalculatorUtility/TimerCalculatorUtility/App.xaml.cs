@@ -9,7 +9,7 @@ namespace TimerCalculatorUtility
             InitializeComponent();
             MainPage = new MainPage();
         }
-        public static INavigation Navigation { get; private set; }
+
         protected override void OnStart()
         {
         }

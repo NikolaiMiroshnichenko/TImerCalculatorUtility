@@ -15,7 +15,5 @@ namespace TimerCalculatorUtility
         {
             InitializeComponent();
         }
-
-   
     }
 }

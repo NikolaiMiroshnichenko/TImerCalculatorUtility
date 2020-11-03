@@ -26,9 +26,7 @@ namespace TimerCalculatorUtility.ViewModels
             };
         }
 
-        public List<MenuItem> MenuItems { get; set; }
-        public Command ToTimerCommand { get; set; }
-        public Command ToCalculatorCommand { get; set; }
+        public List<MenuItem> MenuItems { get; }
 
         private void NavigateToTimer()
         {

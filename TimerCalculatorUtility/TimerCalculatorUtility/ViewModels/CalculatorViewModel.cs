@@ -17,7 +17,7 @@ namespace TimerCalculatorUtility.ViewModels
             ResultCommand = new Command(Resulting);
             ClearCommand = new Command(Clear);
             DeleteLastSymbolCommand = new Command(DeleteLastSymbol);
-            PrecentCommand = new Command(CalcPrcent);
+            PrecentCommand = new Command(CalculateProcent);
         }
 
         public string InputString { get; set; }
@@ -35,7 +35,7 @@ namespace TimerCalculatorUtility.ViewModels
             WriteInResultString(symbol);
         }
 
-        private void CalcPrcent()
+        private void CalculateProcent()
         {
             InputString = _stringBuilder.Append("/100").ToString();
             ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();

@@ -35,7 +35,7 @@ namespace TimerCalculatorUtility.ViewModels
             WriteInResultString(symbol);
         }
 
-        private void CalculateProcent()
+        private void CalculatePercent()
         {
             InputString = _stringBuilder.Append("/100").ToString();
             ResultString = Convert.ToDouble(new DataTable().Compute(InputString, null)).ToString();

@@ -16,7 +16,7 @@ namespace TimerCalculatorUtility.ViewModels
             InputSymbolCommand = new Command<string>(AddSymbolToString);
             ResultCommand = new Command(Resulting);
             ClearCommand = new Command(Clear);
-            DleleteLastSymbolCommand = new Command(DeleteLastSymbol);
+            DeleteLastSymbolCommand = new Command(DeleteLastSymbol);
             PrecentCommand = new Command(CalcPrcent);
         }
 
@@ -25,11 +25,9 @@ namespace TimerCalculatorUtility.ViewModels
         public Command<string> InputSymbolCommand { get; }
         public Command ClearCommand { get; }
         public Command ResultCommand { get; }
-        public Command DleleteLastSymbolCommand { get; }
+        public Command DeleteLastSymbolCommand { get; }
         public Command PrecentCommand { get; }
         public Command CangePoliarityCommand { get; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private void AddSymbolToString(string symbol)
         {

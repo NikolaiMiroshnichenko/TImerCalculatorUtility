@@ -35,8 +35,6 @@ namespace TimerCalculatorUtility.ViewModels
         public Command StartCommand { get; }
         public StopwatchStatus Status { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private void StartTimeRunning()
         {
             Status = StopwatchStatus.Processing;

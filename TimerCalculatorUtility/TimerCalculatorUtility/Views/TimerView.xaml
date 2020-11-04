@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:viewmodels="clr-namespace:TimerCalculatorUtility.ViewModels"
+             xmlns:converters ="clr-namespace:TimerCalculatorUtility.Converters"
+             x:Class="TimerCalculatorUtility.Views.TimerView"
+             IconImageSource="humburger.png"
+             Title="Stopwatch">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ListViewVisibilityConverter x:Key="ListViewVisibilityConverter"/>
+            <converters:StartButtonVisibilityConverter x:Key="StartButtonVisibilityConverter"/>
+            <converters:LapButtonVisibilityConverter x:Key="LapButtonVisibilityConverter"/>
+            <converters:ResetAndResumeButtonVisibilityConverter x:Key="ResetAndResumeButtonVisibilityConverter"/>
+            <converters:StopButtonVisibilityConverter x:Key="StopButtonVisibilityConverter"/>
+            <Color x:Key="PinkButton">#d4526a</Color>
+            <Color x:Key="BlueButton">#6063f0</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.BindingContext>
+        <viewmodels:TimerViewModel x:Name="ViewModel"/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+            <Label Text="{Binding TimeString}"
+                   FontSize="65"
+                   TextColor="{StaticResource Key=Black}"
+                   AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0.53,0.17,0.7,0.13"
+                   x:Name="CurrentTimeLabel"/>
+            
+            <Label Text="{Binding LapTimeString}"
+                   FontSize="35"
+                   AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.3, 0.4, 0.08"/>
+         
+            <ListView ItemsSource="{Binding Times}"
+                      IsVisible="{Binding Path=Status, 
+                      Converter={StaticResource ListViewVisibilityConverter}}"
+                      AbsoluteLayout.LayoutFlags="All"
+                      AbsoluteLayout.LayoutBounds="0.5,0.7,0.8,0.5">
+                <ListView.Header>
+                    <StackLayout Margin="0,30,0,20">
+                        <StackLayout Orientation="Horizontal">
+                            
+                            <Label Text="Lap" 
+                                   HorizontalOptions="StartAndExpand"/>
+                            
+                            <Label Text="Lap times" 
+                                   HorizontalOptions="CenterAndExpand"/>
+                            
+                            <Label Text="Overall time" 
+                                   HorizontalOptions="EndAndExpand"/>
+                            
+                        </StackLayout>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="100" >
+                            <StackLayout Orientation="Horizontal">
+                                
+                                <Label Text="{Binding LapNumber}" 
+                                       HorizontalOptions="StartAndExpand"/>
+                                
+                                <Label Text="{Binding LapTime, StringFormat='{0:mm\\:ss\\.ff}'}" 
+                                       HorizontalOptions="CenterAndExpand" 
+                                       Margin="10,0,0,0"/>
+                                
+                                <Label Text="{Binding OverallTime, StringFormat='{0:mm\\:ss\\.ff}'}" 
+                                       HorizontalOptions="EndAndExpand" 
+                                       Margin="0,0,10,0" />
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+                <Button Text="Start" Command="{Binding StartCommand}"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        AbsoluteLayout.LayoutBounds="0.5,0.92,75,38"
+                        Style="{StaticResource timerButtonStyle}" 
+                        BackgroundColor="{StaticResource Key=BlueButton}"
+                        IsVisible="{Binding Path=Status, 
+                        Converter={StaticResource StartButtonVisibilityConverter}}"/>
+            
+                <Button Text="Stop" 
+                        Command="{Binding StopCommand}"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        AbsoluteLayout.LayoutBounds="0.20,0.92,75,38"
+                        BackgroundColor="{StaticResource Key=PinkButton}"
+                        Style="{StaticResource timerButtonStyle}"
+                        IsVisible="{Binding Path=Status, 
+                        Converter={StaticResource StopButtonVisibilityConverter}}"/>
+            
+                <Button Text="Lap" 
+                        Command="{Binding LapCommand}"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        AbsoluteLayout.LayoutBounds="0.80,0.92,75,38"
+                        BackgroundColor="{StaticResource Key=Black}"
+                        Style="{StaticResource timerButtonStyle}"
+                        IsVisible="{Binding Path=Status, 
+                        Converter={StaticResource LapButtonVisibilityConverter }}"/>  
+            
+                <Button Text="Resume" 
+                        Command="{Binding ResumeCommand}"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        AbsoluteLayout.LayoutBounds="0.20,0.92,75,38"
+                        Style="{StaticResource timerButtonStyle}"
+                        BackgroundColor="{StaticResource Key=BlueButton}"
+                        IsVisible="{Binding Path=Status, 
+                        Converter={StaticResource ResetAndResumeButtonVisibilityConverter}}"/>
+            
+                <Button Text="Reset" 
+                        Command="{Binding ResetCommand}"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        AbsoluteLayout.LayoutBounds="0.80,0.92,75,38"
+                        Style="{StaticResource timerButtonStyle}"
+                        BackgroundColor="{StaticResource Key=Black}"
+                        IsVisible="{Binding Path=Status, 
+                        Converter={StaticResource ResetAndResumeButtonVisibilityConverter}}"/>
+            
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -38,98 +38,171 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Label Text="{Binding InputString}" HorizontalOptions="EndAndExpand" FontSize="40" TextColor="{StaticResource Key=Black}"
-                   Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,0,20,0" />
+            <Label Text="{Binding InputString}" 
+                   HorizontalOptions="EndAndExpand" 
+                   FontSize="40" 
+                   TextColor="{StaticResource Key=Black}"
+                   Grid.Column="0" 
+                   Grid.Row="1" 
+                   Grid.ColumnSpan="4" 
+                   Margin="0,0,20,0" />
 
-            <Label Text="{Binding ResultString}"  HorizontalOptions="EndAndExpand" FontSize="30"
-                   Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Margin="0,0,25,0"/>
+            <Label Text="{Binding ResultString}"  
+                   HorizontalOptions="EndAndExpand" 
+                   FontSize="30"
+                   Grid.Column="0" 
+                   Grid.Row="3" 
+                   Grid.ColumnSpan="4" 
+                   Margin="0,0,25,0"/>
 
-            <ImageButton Command="{Binding DeleteLastSymbolCommand}" BackgroundColor="{StaticResource Key=Transparent}"
-                    Grid.Row="4" Grid.Column="3" Source="delete_512.png" Margin="0,0,25,0"
-                    WidthRequest="30" HeightRequest="20" />
+            <ImageButton Command="{Binding DeleteLastSymbolCommand}" 
+                         BackgroundColor="{StaticResource Key=Transparent}"
+                         Grid.Row="4" 
+                         Grid.Column="3" 
+                         Source="delete_512.png" 
+                         Margin="0,0,25,0"
+                         WidthRequest="30" 
+                         HeightRequest="20" />
             
-            <Button  Command="{Binding ClearCommand}" Text ="C"
+            <Button  Text ="C"
+                     Command="{Binding ClearCommand}"
                      Style="{StaticResource ActionButtonCalcStyle}"
                      TextColor="{StaticResource Key=ClearButtonText}" 
-                     Grid.Column="0" Grid.Row="5" />
+                     Grid.Column="0" 
+                     Grid.Row="5" />
 
-            <Button  Text="( )" Command="{Binding InputSymbolCommand}" CommandParameter="()"                      
+            <Button  Text="( )" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="()"                      
                      Style="{StaticResource ActionButtonCalcStyle}"
-                     Grid.Column="1" Grid.Row="5"/>
+                     Grid.Column="1" 
+                     Grid.Row="5"/>
 
-            <Button  Text="%" Command="{Binding PrecentCommand}" CommandParameter="%"                     
+            <Button  Text="%" Command="{Binding PrecentCommand}" 
+                     CommandParameter="%"                     
                      Style="{StaticResource ActionButtonCalcStyle}" 
-                     Grid.Column="2" Grid.Row="5"/>
+                     Grid.Column="2" 
+                     Grid.Row="5"/>
 
-            <Button  Text="/" Command="{Binding InputSymbolCommand}" CommandParameter="/"
+            <Button  Text="/" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="/"
                      Style="{StaticResource ActionButtonCalcStyle}" 
-                     Grid.Column="3" Grid.Row="5"/>
+                     Grid.Column="3" 
+                     Grid.Row="5"/>
 
-            <Button  Text="7" Command="{Binding InputSymbolCommand}" CommandParameter="7"                         
+            <Button  Text="7" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="7"                         
                      Style="{StaticResource SymbolButtonCalcStyle}"
-                     Grid.Column="0" Grid.Row="6"/>
+                     Grid.Column="0" 
+                     Grid.Row="6"/>
 
-            <Button  Text="8" Command="{Binding InputSymbolCommand}" CommandParameter="8"                         
+            <Button  Text="8" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="8"                         
                      Style="{StaticResource SymbolButtonCalcStyle}"
-                     Grid.Column="1" Grid.Row="6"/>
+                     Grid.Column="1" 
+                     Grid.Row="6"/>
 
-            <Button  Text="9" Command="{Binding InputSymbolCommand}" CommandParameter="9"                     
+            <Button  Text="9" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="9"                     
                      Style="{StaticResource SymbolButtonCalcStyle}" 
-                     Grid.Column="2" Grid.Row="6"/>
+                     Grid.Column="2" 
+                     Grid.Row="6"/>
 
-            <Button  Text="*" Command="{Binding InputSymbolCommand}" CommandParameter="*"
+            <Button  Text="*" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="*"
                      Style="{StaticResource ActionButtonCalcStyle}"
-                     Grid.Column="3" Grid.Row="6"/>
+                     Grid.Column="3" 
+                     Grid.Row="6"/>
 
-            <Button  Text="4" Command="{Binding InputSymbolCommand}" CommandParameter="4"
+            <Button  Text="4" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="4"
                      Style="{StaticResource SymbolButtonCalcStyle}"
-                     Grid.Column="0" Grid.Row="7"/>
+                     Grid.Column="0" 
+                     Grid.Row="7"/>
 
-            <Button  Text="5" Command="{Binding InputSymbolCommand}" CommandParameter="5"
+            <Button  Text="5" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="5"
                      Style="{StaticResource SymbolButtonCalcStyle}"
-                     Grid.Column="1" Grid.Row="7"/>
+                     Grid.Column="1" 
+                     Grid.Row="7"/>
 
-            <Button  Text="6" Command="{Binding InputSymbolCommand}" CommandParameter="6"
+            <Button  Text="6" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="6"
                      Style="{StaticResource SymbolButtonCalcStyle}"
-                     Grid.Column="2" Grid.Row="7"/>
+                     Grid.Column="2" 
+                     Grid.Row="7"/>
 
-            <Button  Text="-" Command="{Binding InputSymbolCommand}" CommandParameter="-"
+            <Button  Text="-" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="-"
                      Style="{StaticResource ActionButtonCalcStyle}"
-                     Grid.Column="3" Grid.Row="7"/>
+                     Grid.Column="3" 
+                     Grid.Row="7"/>
 
-            <Button  Text="1" Command="{Binding InputSymbolCommand}" CommandParameter="1"
+            <Button  Text="1" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="1"
                      Style="{StaticResource SymbolButtonCalcStyle}"
-                     Grid.Column="0" Grid.Row="8"/>
+                     Grid.Column="0" 
+                     Grid.Row="8"/>
 
-            <Button  Text="2" Command="{Binding InputSymbolCommand}" CommandParameter="2"
+            <Button  Text="2" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="2"
                      Style="{StaticResource SymbolButtonCalcStyle}"
-                     Grid.Column="1" Grid.Row="8"/>
+                     Grid.Column="1" 
+                     Grid.Row="8"/>
 
-            <Button  Text="3" Command="{Binding InputSymbolCommand}" CommandParameter="3"
+            <Button  Text="3" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="3"
                      Style="{StaticResource SymbolButtonCalcStyle}"
-                     Grid.Column="2" Grid.Row="8"/>
+                     Grid.Column="2" 
+                     Grid.Row="8"/>
 
-            <Button  Text="+" Command="{Binding InputSymbolCommand}" CommandParameter="+"
+            <Button  Text="+" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="+"
                      Style="{StaticResource ActionButtonCalcStyle}" 
-                     Grid.Column="3" Grid.Row="8"/>
+                     Grid.Column="3" 
+                     Grid.Row="8"/>
 
-            <Button  Text="+/-" Command="{Binding CangePoliarityCommand}" CommandParameter="+/-"
+            <Button  Text="+/-" 
+                     Command="{Binding CangePoliarityCommand}" 
+                     CommandParameter="+/-"
                      Style="{StaticResource SymbolButtonCalcStyle}" 
-                     Grid.Column="0" Grid.Row="9"/>
+                     Grid.Column="0" 
+                     Grid.Row="9"/>
 
-            <Button  Text="0" Command="{Binding InputSymbolCommand}" CommandParameter="0"                     
+            <Button  Text="0" 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="0"                     
                      Style="{StaticResource SymbolButtonCalcStyle}" 
-                     Grid.Column="1" Grid.Row="9"/>
+                     Grid.Column="1" 
+                     Grid.Row="9"/>
 
-            <Button  Text="." Command="{Binding InputSymbolCommand}" CommandParameter="."
+            <Button  Text="." 
+                     Command="{Binding InputSymbolCommand}" 
+                     CommandParameter="."
                      Style="{StaticResource SymbolButtonCalcStyle}" 
-                     Grid.Column="2" Grid.Row="9"/>
+                     Grid.Column="2" 
+                     Grid.Row="9"/>
 
-            <Button  Text="=" Command="{Binding ResultCommand}"
+            <Button  Text="=" 
+                     Command="{Binding ResultCommand}"
                      Style="{StaticResource ActionButtonCalcStyle}"
                      BackgroundColor="{StaticResource Key=StopwatchButtonGreen}"   
                      TextColor="{StaticResource Key=White}"    
-                     Grid.Column="3" Grid.Row="9"/>
+                     Grid.Column="3" 
+                     Grid.Row="9"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

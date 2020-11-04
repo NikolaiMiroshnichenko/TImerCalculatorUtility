@@ -8,7 +8,6 @@
     <MasterDetailPage.Master>
         <views:MenuPageView  x:Name="MenuPage"/>
     </MasterDetailPage.Master>
-
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
@@ -16,6 +15,4 @@
             </x:Arguments>
         </NavigationPage>  
     </MasterDetailPage.Detail>
-    
-
 </MasterDetailPage>
